@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Components
 import ProjectCard from "../components/ProjectCard/ProjectCard";
@@ -17,11 +18,26 @@ function HomePage() {
       });
   }, []);
 
+//compare function to show latest stories 
+function compare(a,b) {
+  if (a.date_created < b.date_created) {
+    return 1;
+  }
+  return 0;
+  }
+  const latestProject = projectList.sort(compare).slice(0,3); 
+
   return (
-    <div id="project-list">
-      {projectList.map((project, key) => {
-        return <ProjectCard key={key} projectData={project} />;
-      })}
+    <div>
+      <h1> The ScrubHub !</h1>
+      <p> Our current projects - North & South of Perth Western Australia </p>
+      <div id="project-list">
+        {/* below commented out shows all stories */}
+        {/* {projectList.map((project, key) => { */}
+        {latestProject.map((project, key) => {
+          return <ProjectCard key={key} projectData={project} />;
+        })}
+      </div>
     </div>
   );
 }
