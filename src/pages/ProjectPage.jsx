@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 
+
 //Components
 import PledgeForm from "../components/PledgeForm/PledgeForm";
 
@@ -22,7 +23,7 @@ function ProjectPage() {
 
    // Check user is LoggedIn
    const token = window.localStorage.getItem("token");
-   const isUserLoggedin = !(token === null || token === undefined || token === "undefined")
+  //  const isUserLoggedin = !(token === null || token === undefined || token === "undefined")
 
 
   // Effects
@@ -53,7 +54,7 @@ function ProjectPage() {
         <p> Goal: {projectData.goal} </p>
         <p> Description: {projectData.description} </p>
     <div>
-      
+
     </div>
         
         <p></p>

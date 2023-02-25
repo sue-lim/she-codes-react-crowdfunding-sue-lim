@@ -67,12 +67,14 @@ function PledgeForm() {
                 alert(`Error: ${err.message}`);
             }
         } else {
-        // redirect to login page
+        //REDIRECT TO LOGIN PAGE 
         navigate(`/login`);
         }
     };
 
     return (
+        //SUPPORTER - AUTO GENERATED 
+        //DRF NOTES - ID AUTO GENERATED 
         <div>
         <form onSubmit={handleSubmit}>
             <div>

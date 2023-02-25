@@ -5,13 +5,16 @@ import ProjectPage from "./pages/ProjectPage";
 import LoginPage from "./pages/LoginPage";
 import PledgePage from "./pages/PledgePage";
 import CommentPage from "./pages/CommentPage";
+import UserRegistrationPage from "./pages/UserRegistrationPage";
+
+
 
 
 
 //import AdminPage from "./pages/AdminPage";
 
 // Components
-import Nav from "./components/Nav/nav";
+import Nav from "./components/Nav/Nav";
 //css
 import './App.css'
 import { useState } from "react";
@@ -32,9 +35,10 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/project/:id", element: <ProjectPage /> },
+      
       { path: "/pledge/", element: <PledgePage /> },
       { path: "/comment/", element: <CommentPage />},
-      // { path: "/user/", element: <UserRegistration />,}
+      { path: "/user/", element: <UserRegistrationPage />,}
       // { path: "/admin", element: <AdminPage /> },
     ],
   },
