@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useInRouterContext, useNavigate, useParams, useOutletContext } from "react-router-dom";
 
-function CommentForm() {
+// CSS 
+
+function CommentForm(props) {
+    const {project} = props
+    const authToken = window.localStorage.getItem("token")
+    const [LoggedIn]= useOutletContext();
     const [comments, setComments] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
-        // "amount": null,
-        // "comment": "",
-        // "anonymous": false,
-        "project": null,        
+        "title": "",
+        "content": "",
+        // "project": null,        
     });
 
     // enables redirect
@@ -20,9 +24,11 @@ function CommentForm() {
     // copies the original data, replaces the old data for each id/value pair to what is input in the form (changes state). this will be submitted to API below
     const handleChange = (event) => {
         const { id, value } = event.target;
+        //data is being sent 
         setComments((prevComments) => ({
         ...prevComments,
         [id]: value,
+        //this is the project I want to call whih is the page I'm looking at
         }));
     };
 
@@ -42,7 +48,8 @@ function CommentForm() {
                 // if not successful, CATCH the error and display as a pop up alert
         // if not logged in, redirect to login page
 
-        if (authToken) {
+        // if (authToken) {
+            if (LoggedIn) {
             try {
                 const response = await fetch(
                     `${import.meta.env.VITE_API_URL}comments/`,
@@ -52,7 +59,13 @@ function CommentForm() {
                     "Content-Type": "application/json",
                     "Authorization": `Token ${authToken}`,
                 },
-                body: JSON.stringify(comments),
+                body: JSON.stringify(
+                    // {project:props.project.id, amount:pledges.amount, comment:pledges.comment, anonymous:pledges.anonymous}
+                    // removed props from the above as we amended the line above.
+                    // {project:project.id, amount:pledges.amount, comment:pledges.comment, anonymous:pledges.anonymous}
+                    {project:project.id,...comments}
+
+                ),
                 }
                 );
                 if (!response.ok) {
@@ -64,50 +77,37 @@ function CommentForm() {
                 alert(`Error: ${err.message}`);
             }
         } else {
-        // redirect to login page
-        navigate(`/login`);
+        //REDIRECT TO LOGIN PAGE 
+        navigate(`/`);
         }
     };
 
+    
     return (
+        //SUPPORTER - AUTO GENERATED 
+        //DRF NOTES - ID AUTO GENERATED 
         <div>
         <form onSubmit={handleSubmit}>
             <div>
-            <label htmlFor="Title">Title:</label>
+            <label htmlFor="title">Title:</label>
             <input
                 type="text"
                 id="title"
-                placeholder="Enter Title"
+                placeholder="Enter a title"
                 onChange={handleChange}
             />
             </div>
             <div>
-            <label htmlFor="comment">Comment:</label>
+            <label htmlFor="content">Comment:</label>
             <input
                 type="text"
-                id="comment"
+                id="content"
                 placeholder="Enter Comment"
                 onChange={handleChange}
             />
             </div>
-            <div>
-            <label htmlFor="project">Project:</label>
-            <input
-                type="text"
-                id="project"
-                placeholder="needs to be auto-filled with current project"
-                onChange={handleChange}
-            />
-            </div>
-            <div>
-            <label htmlFor="project">Commentator:</label>
-            <input
-                type="text"
-                id="project"
-                placeholder="needs to be auto-filled with current project"
-                onChange={handleChange}
-            />
-            </div>
+          
+
             <button type="submit">Comment</button>
         </form>
         </div>

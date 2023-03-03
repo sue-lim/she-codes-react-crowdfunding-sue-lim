@@ -49,7 +49,7 @@ const handleSubmit = async (event) => {
     if (authToken) {
         try {
             const response = await fetch(
-                `${import.meta.env.VITE_API_URL}projects/`,
+                `${import.meta.env.VITE_API_URL}project/`,
                 {
                 method: "post",
                 headers: {
@@ -96,10 +96,10 @@ return (
         />
         </div>
         <div>
-        <label htmlFor="is_open">Is the project still open:</label>
+        <label htmlFor="is_opens">Anonymous:</label>
         <input 
             type="checkbox"
-            id="is_open" 
+            id="anonymous" 
             onChange={handleChange} 
         />
         </div>
@@ -119,6 +119,6 @@ return (
     </form>
     </div>
 );
-}
 
-export default PledgeForm;
+
+export default ProjectForm;

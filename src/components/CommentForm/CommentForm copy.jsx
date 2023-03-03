@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function UserRegistrationForm() {
-    const [users, setUsers] = useState({
+function CommentForm() {
+    const [comments, setComments] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
         // "amount": null,
         // "comment": "",
         // "anonymous": false,
-        // "project": null,        
+        "project": null,        
     });
 
     // enables redirect
@@ -20,8 +20,8 @@ function UserRegistrationForm() {
     // copies the original data, replaces the old data for each id/value pair to what is input in the form (changes state). this will be submitted to API below
     const handleChange = (event) => {
         const { id, value } = event.target;
-        setComments((prevUsers) => ({
-        ...prevUsers,
+        setComments((prevComments) => ({
+        ...prevComments,
         [id]: value,
         }));
     };
@@ -45,14 +45,14 @@ function UserRegistrationForm() {
         if (authToken) {
             try {
                 const response = await fetch(
-                    `${import.meta.env.VITE_API_URL}users/`,
+                    `${import.meta.env.VITE_API_URL}comments/`,
                     {
                     method: "post",
                     headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Token ${authToken}`,
                 },
-                body: JSON.stringify(users),
+                body: JSON.stringify(comments),
                 }
                 );
                 if (!response.ok) {
@@ -73,63 +73,45 @@ function UserRegistrationForm() {
         <div>
         <form onSubmit={handleSubmit}>
             <div>
-            <label htmlFor="Username">Username:</label>
+            <label htmlFor="Title">Title:</label>
             <input
                 type="text"
-                id="username"
-                placeholder="Enter Username"
+                id="title"
+                placeholder="Enter Title"
                 onChange={handleChange}
             />
             </div>
             <div>
-            <label htmlFor="first_name">First Name:</label>
+            <label htmlFor="comment">Comment:</label>
             <input
                 type="text"
-                id="first_name"
-                placeholder="Enter your first name"
+                id="comment"
+                placeholder="Enter Comment"
                 onChange={handleChange}
             />
             </div>
             <div>
-            <label htmlFor="last_nam">Last Name:</label>
+            <label htmlFor="project">Project:</label>
             <input
                 type="text"
-                id="last_name"
-                placeholder="Enter your last name"
+                id="project"
+                placeholder="needs to be auto-filled with current project"
                 onChange={handleChange}
             />
             </div>
             <div>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="project">Commentator:</label>
             <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
+                type="text"
+                id="project"
+                placeholder="needs to be auto-filled with current project"
                 onChange={handleChange}
             />
             </div>
-            <div>
-            <label htmlFor="password">Password:</label>
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                onChange={handleChange}
-            />
-            </div>
-            <div>
-            <label htmlFor="email">Password:</label>
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password again"
-                onChange={handleChange}
-            />
-            </div>
-            <button type="submit">Register</button>
+            <button type="submit">Comment</button>
         </form>
         </div>
     );
 }
 
-export default UserRegistrationForm;
+export default CommentForm;

@@ -6,8 +6,11 @@ import { useParams } from "react-router-dom";
 
 
 
+
 //Components
 import PledgeForm from "../components/PledgeForm/PledgeForm";
+import CommentForm from "../components/CommentForm/CommentForm";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 function ProjectPage() {
   // State
@@ -15,7 +18,7 @@ function ProjectPage() {
   const [commentData, setCommentData] = useState({ comments: [] });
   const [projectPledgeAmount, setProjectPledgeAmount] = useState();
   const [projectGoalPercentage, setGoalPercentage] = useState();
-  const [pledgeForm, setPledgeFormData] = useState({ pledgeforms: [] });
+
 
 
   // Hooks
@@ -23,10 +26,10 @@ function ProjectPage() {
 
    // Check user is LoggedIn
    const token = window.localStorage.getItem("token");
-  //  const isUserLoggedin = !(token === null || token === undefined || token === "undefined")
+   const isUserLoggedin = !(token === null || token === undefined || token === "undefined")
 
 
-  // Effects
+  //Effects
   useEffect(() => {
     const fetchProject = async () => {
       try {
@@ -36,55 +39,133 @@ function ProjectPage() {
         console.log(res);
 
         const data = await res.json();
-        setProjectData(data);
+        setProjectData(data); /*returns projects and associated pledges to screen*/
+        setCommentData(data); /*returns comments related to the project to the screen*/
+        setProjectPledgeAmount(data);
+
+        const totalPledges = projectData.sum_pledges
+        // eslint-disable-next-line eqeqeq
+        .filter (pledgeData => pledgeData.project_id == id)
+        // reducing your list to an output value
+        .reduce ((sum, pledgeData) => sum + pledgeData.amount, 0)
+    setProjectPledgeAmount(totalPledges);
+
+    console.log(totalPledges)
+    
+    const goalPercentage = ((totalPledges / projectData.goal) * 100).toFixed(2)
+    setGoalPercentage(goalPercentage);
+
+
       } catch (err) {
         console.log(err);
       }
     };
     fetchProject();
-  }, []);
+  }, [id]);
+
+//   useEffect(() => {
+//     fetch(`${import.meta.env.VITE_API_URL}projects/${id}`)
+//     .then((results) => {
+//         return results.json();
+//     })
+//     .then((data) => {
+//         console.log(data)
+
+//         if (data.detail === 'Not found.') {
+//             setIsError(true)
+//         } else {
+//             setProjectData(data);
+//             setCommentData(data);
+//             setProjectPledgeAmount(data);
+        
+//             const totalPledges = data.pledges
+//                 // eslint-disable-next-line eqeqeq
+//                 .filter (pledge => pledge.project_id == id)
+//                 // reducing your list to an output value
+//                 .reduce ((sum, pledge) => sum + pledge.amount, 0)
+//             setProjectPledgeAmount(totalPledges);
+            
+//             const goalPercentage = ((totalPledges / data.goal) * 100).toFixed(2)
+//             setGoalPercentage(goalPercentage);
+//         }
+//     })
+// }, []);
+
+
+
+  // PRINT PLEDGES RELATED TO THE PROJECT
+  // console.log(projectData.pledges)
+  // console.log(commentData.comments)
+  // console.log(projectData.goal)
+
 
   return (
-    <div>
-      <h2>{projectData.title}</h2>
-      {/* add css to the image */}
+  <div className="project-pg-container">
+
+    <div className="project-card-page-col-1">
+      <div className="project-card-img">
+      <h1 className="project-card-title">{projectData.title}</h1> 
       <img src={projectData.image} />
-      <h3>Created at: {projectData.date_created}</h3>
-        <h3>{`Status: ${projectData.is_open}`}</h3>
-        <p> Goal: {projectData.goal} </p>
-        <p> Description: {projectData.description} </p>
-    <div>
+        <div className="project-card-txt">
 
+          <h3>Created at: {new Date(projectData.date_created).toDateString()}</h3>
+          <h3>{`Status: ${projectData.is_open}`}</h3>
+          <p> $Goal: {projectData.goal} </p>
+          <p> Description: {projectData.description} </p>
+        </div>
+      </div>
     </div>
-        
-        <p></p>
-      <h3>Pledges:</h3>
-      <ul>
-        {projectData.pledges.map((pledgeData, key) => {
-          return (
-            <li key={key}>
-              
-              $ {pledgeData.amount} from:  {pledgeData.supporter}
-              {pledgeData.comment}
-            </li>
-          );
-        })}
-      </ul>
-      <ul>
 
-      <h2>{commentData.title}</h2>
+    <div className="project-card-page-col-2">
+      <div className="project-card-progressbar">
+      <p> ${projectData.sum_pledges}</p>
+      <ProgressBar/>
 
-      <h3>Comments:</h3>
-        {commentData.comments.map((commentData, key) => {
-          return (
-            <li key={key}>
-              
-             {commentData.content} {commentData.project} 
-            </li>
-          );
+      {/* <h3>{projectData.is_open
+            // '? :' are ternary oprators
+                // '?' is if true
+                // ':' is if false
+                // what comes before the ? is the predicate aka 'what you write in the if statement'
+                ? projectData.goal > projectPledgeAmount
+                    ? "Currently Accepting Inventi-Cents! 💰"
+                    : "We made a lot of money, please give more though 👀"
+                : "Invention has been built."}</h3> */}
+     
+      </div>
+
+      <div className="project-card-pledges">
+        <ul>
+        <h3>Pledges:</h3>
+        {projectData.pledges &&
+          projectData.pledges.map((pledgeData, key) => {
+        return (
+          <li key={key}>
+          $ {pledgeData.amount} from:  {pledgeData.supporter}
+          {pledgeData.comment}
+          </li>
+        );
         })}
-      </ul>
+        </ul> 
+        <PledgeForm/>
+      </div>
+
+      <div className="project-card-comments">
+        <ul>
+        <h3>Comments:</h3>
+        {commentData.comments &&
+        commentData.comments.map((commentData, key) => {
+        return (
+          <li key={key}>
+          {commentData.commentator}  says ... {commentData.title} 
+          </li>
+          );
+          })}
+          </ul>
+        <CommentForm/>
+      </div>
     </div>
+  </div>
+
   );
 }
 

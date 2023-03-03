@@ -1,20 +1,20 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+
 // Pages
-import HomePage from "./pages/HomePage";
-import ProjectPage from "./pages/ProjectPage";
-import LoginPage from "./pages/LoginPage";
-import PledgePage from "./pages/PledgePage";
+import AllProjectsPage from "./pages/AllProjectsPage";
 import CommentPage from "./pages/CommentPage";
-import UserRegistrationPage from "./pages/UserRegistrationPage";
-
-
-
-
-
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import ProjectPage from "./pages/ProjectPage";
+import ProfilePage from "./pages/ProfilePage";
+import PledgePage from "./pages/PledgePage";
+import RegistrationPage from "./pages/RegistrationPage";
+import SessionUserPage from "./pages/SessionUserPage";
 //import AdminPage from "./pages/AdminPage";
 
 // Components
 import Nav from "./components/Nav/Nav";
+
 //css
 import './App.css'
 import { useState } from "react";
@@ -33,12 +33,14 @@ const router = createBrowserRouter([
     element: <HeaderLayout />,
     children: [
       { path: "/", element: <HomePage /> },
-      { path: "/login", element: <LoginPage /> },
-      { path: "/project/:id", element: <ProjectPage /> },
-      
-      { path: "/pledge/", element: <PledgePage /> },
+      { path: "/all-projects/", element: <AllProjectsPage/>},
       { path: "/comment/", element: <CommentPage />},
-      { path: "/user/", element: <UserRegistrationPage />,}
+      { path: "/login", element: <LoginPage /> },
+      { path: "/projects/:id", element: <ProjectPage /> },
+      { path: "/pledge/", element: <PledgePage /> },
+      { path: "/profile/:<int:pk>", element: <ProfilePage />},
+      { path: "/registration/", element: <RegistrationPage />,},
+      { path: "/user/session", element: <SessionUserPage /> },       
       // { path: "/admin", element: <AdminPage /> },
     ],
   },

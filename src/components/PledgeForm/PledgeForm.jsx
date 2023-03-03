@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useInRouterContext, useNavigate, useParams, useOutletContext } from "react-router-dom";
 
 // CSS 
 
-function PledgeForm() {
-
+function PledgeForm(props) {
+    const {project} = props
+    const authToken = window.localStorage.getItem("token")
+    const [LoggedIn]= useOutletContext();
+    
     const [pledges, setPledges] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
-        // "amount": null,
-        // "comment": "",
-        // "anonymous": false,
+        "amount": null,
+        "comment": "",
+        "anonymous": false,
         // "project": null,        
     });
 
@@ -23,9 +26,11 @@ function PledgeForm() {
     // copies the original data, replaces the old data for each id/value pair to what is input in the form (changes state). this will be submitted to API below
     const handleChange = (event) => {
         const { id, value } = event.target;
+        //data is being sent 
         setPledges((prevPledges) => ({
         ...prevPledges,
         [id]: value,
+        //this is the project I want to call whih is the page I'm looking at
         }));
     };
 
@@ -35,7 +40,7 @@ function PledgeForm() {
         event.preventDefault();
 
         // get auth token from local storage
-        const authToken = window.localStorage.getItem("token")
+        // const authToken = window.localStorage.getItem("token")
 
         // if the auth token exists (if logged in) 
             // TRY to POST the data to your deployed, using fetch.
@@ -45,7 +50,8 @@ function PledgeForm() {
                 // if not successful, CATCH the error and display as a pop up alert
         // if not logged in, redirect to login page
 
-        if (authToken) {
+        // if (authToken) {
+            if (LoggedIn) {
             try {
                 const response = await fetch(
                     `${import.meta.env.VITE_API_URL}pledges/`,
@@ -55,7 +61,13 @@ function PledgeForm() {
                     "Content-Type": "application/json",
                     "Authorization": `Token ${authToken}`,
                 },
-                body: JSON.stringify(pledges),
+                body: JSON.stringify(
+                    // {project:props.project.id, amount:pledges.amount, comment:pledges.comment, anonymous:pledges.anonymous}
+                    // removed props from the above as we amended the line above.
+                    // {project:project.id, amount:pledges.amount, comment:pledges.comment, anonymous:pledges.anonymous}
+                    {project:project.id,...pledges}
+
+                ),
                 }
                 );
                 if (!response.ok) {
@@ -68,10 +80,11 @@ function PledgeForm() {
             }
         } else {
         //REDIRECT TO LOGIN PAGE 
-        navigate(`/login`);
+        navigate(`/`);
         }
     };
 
+    
     return (
         //SUPPORTER - AUTO GENERATED 
         //DRF NOTES - ID AUTO GENERATED 
@@ -98,20 +111,12 @@ function PledgeForm() {
             <div>
             <label htmlFor="anonymous">Anonymous:</label>
             <input 
-                type="checkbox"
+                type="checkbox" 
                 id="anonymous" 
                 onChange={handleChange} 
             />
             </div>
-            <div>
-            <label htmlFor="project">Project:</label>
-            <input
-                type="text"
-                id="project"
-                placeholder="needs to be auto-filled with current project"
-                onChange={handleChange}
-            />
-            </div>
+
             <button type="submit">Pledge</button>
         </form>
         </div>
