@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .contact-form-labels {
+        @apply block text-gray-700 text-sm font-medium mb-2;
+
+    }
+    .contact-form-container {
+        @apply border-0 bg-white drop-shadow-xl rounded px-8 pt-6 pb-8 mb-4;
+    }
+    /* grid grid-cols-3 gap-3 is tailwind settings --> https://tailwindcss.com/docs/grid-template-columns  */
+};
+
+

@@ -27,15 +27,17 @@ const ContactForm = () => {
   };
   return (
 
-    // add container grid 
-    <div className="w-full max-w-xs">
-      <form 
+<div className="grid grid-cols-3 gap-3 mt-6">
+  <div></div>
+    <div>
+      <div className="w-full max-w-xs">
+        <form 
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <h2> Contact Us </h2>
+        className="contact-form-container">
+        <h3> Contact Us </h3>
           <div className="mb-4">
             <label
-            className="block text-gray-700 text-sm font-bold mb-2" 
+            className="contact-form-labels" 
             htmlFor="name">Name:</label>
             <input 
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -43,32 +45,39 @@ const ContactForm = () => {
             placeholder="Enter your name" 
             id="name" required />
           </div>
+        
 
-          <div className="mb-6">
-            <label
-            className="block text-gray-700 text-sm font-bold mb-2" 
-            htmlFor="email">Email:</label>
-            <input 
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="email" 
-            id="email" 
-            required />
-          </div>
+        <div className="mb-6">
+          <label
+          className="contact-form-labels" 
+          htmlFor="email">Email:</label>
+          <input 
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          type="email" 
+          id="email" 
+          required />
+        </div>
 
-          <div className="mb-6">
-            <label 
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="message">
-            Message:</label>
-            <textarea 
-            className="shadow appearance-none border rounded h-30 min-h-full w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
-            id="message" 
-            required />
-          </div>
+      <div className="mb-6">
+          <label 
+          className="contact-form-labels"
+          htmlFor="message">
+          Message:</label>
+          <textarea 
+          className="shadow appearance-none border rounded h-30 min-h-full w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+          id="message" 
+          required />
+      </div>
 
-          <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">{status}</button>
-      </form>
+      <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">{status}</button>
+      </form> 
     </div>
+  </div>
+  <div></div>
+ 
+
+
+</div>
   );
 };
 
