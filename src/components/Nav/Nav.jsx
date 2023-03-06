@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
 // Styles
-// import "./Nav.css";
+import "./Nav.css";
 
 function Nav() {
 

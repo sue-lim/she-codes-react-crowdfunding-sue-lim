@@ -32,10 +32,10 @@ function compare(a,b) {
   const latestProject = projectList.sort(compare).slice(0,3); 
 
   return (
-    <div className="all-project-pg-container ">
+    <div className="">
       <h1> The ScrubHub !</h1>
       <p> Our current projects - North & South of Perth Western Australia </p>
-
+<div className="grid place-content-start md:place-content-center">
       <div id="project-list">
         {/* below commented out shows all stories */}
         {/* {projectList.map((project, key) => { */}
@@ -43,7 +43,7 @@ function compare(a,b) {
           return <ProjectCard key={key} projectData={project} />;
         })}
       </div>
-    </div>
+    </div></div>
   );
 }
 

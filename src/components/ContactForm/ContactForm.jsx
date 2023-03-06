@@ -27,18 +27,18 @@ const ContactForm = () => {
   };
   return (
 
-<div className="grid grid-cols-3 gap-3 mt-6">
+<div className="grid grid-cols-3 gap-5 mt-8">
   <div></div>
     <div>
       <div className="w-full max-w-xs">
         <form 
         onSubmit={handleSubmit}
-        className="contact-form-container">
+        className="form-container">
         <h3> Contact Us </h3>
           <div className="mb-4">
             <label
-            className="contact-form-labels" 
-            htmlFor="name">Name:</label>
+            className="form-labels" 
+            htmlFor="name">Name</label>
             <input 
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text" 
@@ -49,8 +49,8 @@ const ContactForm = () => {
 
         <div className="mb-6">
           <label
-          className="contact-form-labels" 
-          htmlFor="email">Email:</label>
+          className="form-labels" 
+          htmlFor="email">Email</label>
           <input 
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="email" 
@@ -60,9 +60,9 @@ const ContactForm = () => {
 
       <div className="mb-6">
           <label 
-          className="contact-form-labels"
+          className="form-labels"
           htmlFor="message">
-          Message:</label>
+          Message</label>
           <textarea 
           className="shadow appearance-none border rounded h-30 min-h-full w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
           id="message" 

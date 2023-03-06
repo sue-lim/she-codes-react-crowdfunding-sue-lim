@@ -1,6 +1,6 @@
 import React from "react";
 
-// import "./ProgressBar.css";
+import "./ProgressBar.css";
 
 const ProgressBar = ({ progressPercentage }) => {
   
@@ -39,6 +39,7 @@ const ProgressBar = ({ progressPercentage }) => {
 
 // const ProgressBar = (props) => {
 //   const { bgcolor, completed } = props;
+  
 //   const containerStyles = {
 //     height: 20,
 //     width: '100%',

@@ -47,15 +47,16 @@ const handleSubmit = async (event) => {
 };
     return (
 
-    // add container grid 
+<div className="grid grid-cols-3 gap-5 mt-8">
+  <div></div>
     <div className="w-full max-w-xs">
         <form 
             onSubmit={handleSubmit}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <h2>Login</h2>
+            className="form-container">
+                <h3>Login</h3>
                 <div className="mb-4">
                     <label 
-                        className="block text-gray-700 text-sm font-bold mb-2" 
+                        className="form-labels" 
                         htmlfor="username"> 
                         Username 
                     </label>
@@ -70,7 +71,7 @@ const handleSubmit = async (event) => {
 
                 <div className="mb-6">
                     <label 
-                        className="block text-gray-700 text-sm font-bold mb-2" for="password"> 
+                        className="form-labels"> 
                         Password 
                     </label>
                         <input 
@@ -80,7 +81,7 @@ const handleSubmit = async (event) => {
                         onChange={handleChange}
                         placeholder="******************"
                     />
-                    <p className="text-gray-500 text-xs italic">Please enter your password.</p>
+                    <p className="text-gray-500 text-xs italic">Please enter your password</p>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -94,7 +95,7 @@ const handleSubmit = async (event) => {
             </form>
 
         </div>
-
+</div>
             
         );
 }

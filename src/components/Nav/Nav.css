@@ -1,37 +1,19 @@
-/* ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-li {
-  float: left;
-}
+@layer base {
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    
+    /* ... */
 }
+@layer components {
+  .nav-bar-link-horizontal {
+    @apply block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-500 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-900 dark:hover:text-white md:dark:hover:bg-transparent;
+  }
+  .nav-bar-link-vertical {
+    /* for hamburger style / need to duplicate the links from horizontal */
+    @apply block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-white dark:bg-blue-600 md:dark:bg-transparent;
+  }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #111;
 }
-
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-  } */
