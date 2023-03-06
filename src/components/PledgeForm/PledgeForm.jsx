@@ -89,27 +89,34 @@ function PledgeForm(props) {
         //SUPPORTER - AUTO GENERATED 
         //DRF NOTES - ID AUTO GENERATED 
         <div>
-        <form onSubmit={handleSubmit}>
-            <div>
-            <label htmlFor="amount">Amount:</label>
+        <form className="form-container-sml" onSubmit={handleSubmit}>
+            <div className="mb-2">
+            <label 
+            className="form-labels-sml" 
+            htmlFor="amount">Amount:</label>
             <input
+                className="input-sml-field"
                 type="number"
                 id="amount"
                 placeholder="Enter amount"
                 onChange={handleChange}
             />
             </div>
-            <div>
-            <label htmlFor="comment">Comment:</label>
+            <div className="mb-2">
+            <label 
+            className="form-labels-sml" htmlFor="comment">Comment:</label>
             <input
+             className="input-sml-field"
                 type="text"
                 id="comment"
                 placeholder="Enter Comment"
                 onChange={handleChange}
             />
             </div>
-            <div>
-            <label htmlFor="anonymous">Anonymous:</label>
+            <div className="mb-2">
+            <label 
+            className="form-labels-sml"
+            htmlFor="anonymous">Anonymous:</label>
             <input 
                 type="checkbox" 
                 id="anonymous" 
@@ -117,7 +124,7 @@ function PledgeForm(props) {
             />
             </div>
 
-            <button type="submit">Pledge</button>
+            <button className="bg-gray-500 hover:bg-gray-700 text-white  py-.5 px-7 rounded focus:outline-none focus:shadow " type="submit">Pledge</button>
         </form>
         </div>
     );

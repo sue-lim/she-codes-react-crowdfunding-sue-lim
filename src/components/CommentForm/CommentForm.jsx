@@ -87,28 +87,34 @@ function CommentForm(props) {
         //SUPPORTER - AUTO GENERATED 
         //DRF NOTES - ID AUTO GENERATED 
         <div>
-        <form onSubmit={handleSubmit}>
-            <div>
-            <label htmlFor="title">Title:</label>
+        <form className="form-container-sml" onSubmit={handleSubmit}>
+            <div className="mb-2">
+            <label
+            className="form-labels-sml" 
+            htmlFor="title">Title:</label>
             <input
+                className="input-sml-field"
                 type="text"
                 id="title"
                 placeholder="Enter a title"
                 onChange={handleChange}
             />
             </div>
-            <div>
-            <label htmlFor="content">Comment:</label>
+            <div className="mb-2">
+            <label
+            className="form-labels-sml"
+            htmlFor="content">Comment:</label>
             <input
+                className="input-sml-field"
                 type="text"
                 id="content"
                 placeholder="Enter Comment"
                 onChange={handleChange}
             />
             </div>
-          
+            {/* <div className="mt-2"></div> */}
 
-            <button type="submit">Comment</button>
+            <button className="bg-gray-500 hover:bg-gray-700 text-white  py-.5 px-4 rounded focus:outline-none focus:shadow " type="submit">Comment</button>
         </form>
         </div>
     );

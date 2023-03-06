@@ -15,6 +15,8 @@ import SessionUserPage from "./pages/SessionUserPage";
 
 // Components
 import Nav from "./components/Nav/Nav";
+// import Footer from "./components/Footer/Footer";
+
 
 //css
 import './App.css'
