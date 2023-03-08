@@ -124,7 +124,8 @@ margin-top: 24px;
   /* border:1px solid;
   border-color:orange; */
   margin:0px;
-  padding: 0px;
+  margin-bottom: 10px;
+  padding: 5px;
   /* float: right; */
 }
 .homepage-col-2 {
@@ -133,7 +134,8 @@ margin-top: 24px;
   /* border:1px solid;
   border-color:orange; */
   margin:0px;
-  padding: 0px;
+  margin-bottom: 10px;
+  padding: 5px;
   /* float: right; */
 }
 .homepage-col-3 {
@@ -141,8 +143,9 @@ margin-top: 24px;
   height: 100%;
   /* border:1px solid;
   border-color:orange; */
+  margin-bottom: 10px;
   margin:0px;
-  padding: 0px;
+  padding: 5px;
   /* float: right; */
 }
 .homepage-col-spacing {

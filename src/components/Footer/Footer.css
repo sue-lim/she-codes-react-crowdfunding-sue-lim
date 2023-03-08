@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    
+    /* ... */
+}
+@layer components {
+.footer-container {
+	@apply bg-neutral-200 text-center text-white dark:bg-neutral-600 pt-1
+}
+}

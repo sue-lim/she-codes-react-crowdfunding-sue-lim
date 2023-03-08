@@ -4,9 +4,8 @@ import { useInRouterContext, useNavigate, useParams, useOutletContext } from "re
 // CSS 
 
 function CommentForm(props) {
-    const {project} = props
-    const authToken = window.localStorage.getItem("token")
-    const [LoggedIn]= useOutletContext();
+    const {project} = props;
+  
     const [comments, setComments] = useState({
         // from JSON Raw Body in Deployed (default values)
         // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
@@ -28,7 +27,7 @@ function CommentForm(props) {
         setComments((prevComments) => ({
         ...prevComments,
         [id]: value,
-        //this is the project I want to call whih is the page I'm looking at
+        //this is the project I want to call & is the page I'm looking at
         }));
     };
 
@@ -48,8 +47,8 @@ function CommentForm(props) {
                 // if not successful, CATCH the error and display as a pop up alert
         // if not logged in, redirect to login page
 
-        // if (authToken) {
-            if (LoggedIn) {
+        if (authToken) {
+            // if (LoggedIn) {
             try {
                 const response = await fetch(
                     `${import.meta.env.VITE_API_URL}comments/`,

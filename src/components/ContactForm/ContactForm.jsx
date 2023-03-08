@@ -40,7 +40,7 @@ const ContactForm = () => {
             className="form-labels" 
             htmlFor="name">Name</label>
             <input 
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="input-field"
             type="text" 
             placeholder="Enter your name" 
             id="name" required />
@@ -52,8 +52,9 @@ const ContactForm = () => {
           className="form-labels" 
           htmlFor="email">Email</label>
           <input 
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="input-field"
           type="email" 
+          placeholder="Enter your your email"
           id="email" 
           required />
         </div>
@@ -64,8 +65,9 @@ const ContactForm = () => {
           htmlFor="message">
           Message</label>
           <textarea 
-          className="shadow appearance-none border rounded h-30 min-h-full w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+          className="input-field" 
           id="message" 
+          placeholder="Send us a message"
           required />
       </div>
 

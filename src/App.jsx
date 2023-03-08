@@ -15,7 +15,7 @@ import SessionUserPage from "./pages/SessionUserPage";
 
 // Components
 import Nav from "./components/Nav/Nav";
-// import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 
 
 //css
@@ -28,6 +28,7 @@ const HeaderLayout = () => {
     <>
       <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Outlet context={[loggedIn, setLoggedIn]} />
+      <Footer/>
     </>
   )
 };
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       { path: "/projects/:id", element: <ProjectPage /> },
       { path: "/pledge/", element: <PledgePage /> },
       { path: "/profile/:<int:pk>", element: <ProfilePage />},
-      { path: "/registration/", element: <RegistrationPage />,},
+      { path: "/register/", element: <RegistrationPage />,},
       { path: "/user/session", element: <SessionUserPage /> },       
       // { path: "/admin", element: <AdminPage /> },
     ],

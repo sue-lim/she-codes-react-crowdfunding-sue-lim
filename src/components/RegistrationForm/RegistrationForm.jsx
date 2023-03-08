@@ -50,17 +50,19 @@ function RegistrationForm() {
     };
 
     return (
+        <div className="grid grid-cols-3 gap-5 mt-8">
+        <div></div>
         <div  className="w-full max-w-xs">
         <form 
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        className="form-container">
             <h3>Become a member</h3>
                 <div  className="mb-4">
                     <label 
-                    className="block text-gray-700 text-sm font-bold mb-2" 
+                    className="form-labels" 
                     htmlFor="username">Username:</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="input-field"
                         type="text"
                         id="username"
                         onChange={handleChange}
@@ -70,11 +72,11 @@ function RegistrationForm() {
 
                 <div className="mb-6">
                     <label 
-                        className="block text-gray-700 text-sm font-bold mb-2" 
+                        className="form-labels" 
                         htmlFor="first_name">
                         First Name:</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="input-field"
                         type="text"
                         id="first_name"
                         placeholder="Enter First name"
@@ -83,9 +85,9 @@ function RegistrationForm() {
                 </div>
 
                 <div className="mb-6">
-                    <label htmlFor="last_name">Last Name:</label>
+                    <label className="form-labels"htmlFor="last_name">Last Name:</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="input-field" 
                         type="text"
                         id="last_name"
                         placeholder="Enter Last name"
@@ -94,9 +96,9 @@ function RegistrationForm() {
                 </div>
 
                 <div className="mb-6">
-                    <label htmlFor="email">Email:</label>
+                    <label className="form-labels" htmlFor="email">Email:</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="input-field" 
                         type="email"
                         id="email"
                         placeholder="Enter unique email"
@@ -105,9 +107,9 @@ function RegistrationForm() {
                 </div>
 
                 <div className="mb-6">
-                    <label htmlFor="password">Password:</label>
+                    <label className="form-labels" htmlFor="password">Password:</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="input-field" 
                         type="text"
                         id="password"
                         placeholder="Enter password"
@@ -116,9 +118,9 @@ function RegistrationForm() {
                     </div>
             
                 <div className="mb-6">
-                <label htmlFor="password2">Type password again:</label>
+                <label className="form-labels"htmlFor="password2">Type password again:</label>
                 <input 
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                    className="input-field" 
                     type="text"
                     id="password2" 
                     placeholder="Enter password"
@@ -131,6 +133,7 @@ function RegistrationForm() {
                     Register
                 </button>
             </form>
+            </div>
         </div>
     )
 }

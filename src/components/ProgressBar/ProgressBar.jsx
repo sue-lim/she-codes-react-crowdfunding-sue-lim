@@ -2,82 +2,42 @@ import React from "react";
 
 import "./ProgressBar.css";
 
-const ProgressBar = ({ progressPercentage }) => {
-  
+const ProgressBar = ({ goal, sum_pledges }) => {
+  const progressPercentage = Math.round((sum_pledges / goal) * 100) + "%";
+  const remainder = Math.round(goal - sum_pledges, 2);
+  // const goalPercent = goal + "%";
+  console.log(progressPercentage);
+  const progressStyle = {
+    width: progressPercentage,
+  };
+  const completeGoalStyle = {
+    width: "100%",
+  };
+
   return (
-    // parent div
-      <div className='h-1 w-full bg-gray-300'> 
-          {/* child div */}
-          <div
-              style={{ width: `${progressPercentage}%`}}
-              className={`h-full ${
-                  progressPercentage < 70 ? 'bg-red-600' : 'bg-green-600'}`}>
-          </div>
+    
+    <div className="h-3 relative max-w-xl rounded-full overflow-hidden">
+      <div className="progress-bar">
+        {sum_pledges < goal ? (
+          <div style={progressStyle} className="progress">{progressPercentage}</div>
+        ) : (
+          <div style={completeGoalStyle} className=""></div>
+        )}
       </div>
+      {/* test with the sum of the pledges & amount raised so far */}
+      {sum_pledges < goal ? (
+        <p className="sub-text">
+          <b>${sum_pledges > 0 ? sum_pledges : "0"} raised</b> of ${goal} goal
+        </p>
+      ) : (
+        <p>
+          Success Goal reached! | ${sum_pledges} raised of ${goal} goal
+        </p>
+      )}
+    </div>
   );
 };
 
-// const ProgressBar = ({ goal, total }) => {
-//   const progressPercentage = Math.round((total / goal) * 100) + "%";
-//   const remainder = Math.round(goal - total, 2);
-//   console.log(progressPercentage);
-//   const progressStyle = {
-//     width: progressPercentage,
-//   };
-//   return (
-//     <div id="progress-container">
-//       <div id="progress-bar">
-//         <div style={progressStyle} id="progress"></div>
-//       </div>
-//       <h3 className="sub-text">
-//         Progress: ${total} of ${goal}.
-//       </h3>
-//     </div>
-//   );
-// };
-
-
-// const ProgressBar = (props) => {
-//   const { bgcolor, completed } = props;
-  
-//   const containerStyles = {
-//     height: 20,
-//     width: '100%',
-//     backgroundColor: "#e0e0de",
-//     borderRadius: 50,
-//     margin: 50
-//   }
-
-//   const fillerStyles = {
-//     height: '100%',
-//     width: `${completed}%`,
-//     backgroundColor: bgcolor,
-//     borderRadius: 'inherit',
-//     textAlign: 'right'
-//   }
-
-//   const labelStyles = {
-//     padding: 5,
-//     color: 'white',
-//     fontWeight: 'bold'
-//   }
-
-//   return (
-//     <div style={containerStyles}>
-//       <div style={fillerStyles}>
-//         <span style={labelStyles}>{`${completed}%`}</span>
-//       </div>
-//     </div>
-//   );
-// };
 export default ProgressBar;
 
-
-// """Basically, the component consists of the two parts:
-
-// the main parent div container - represents the whole bar
-// the child div - completed part of the bar with the span which will show the completed percentage number.
-// Our custom progress bar component will receive just two props:
-
-// bgcolor - background color of the completed part of the bar
-// completed - number between 0 and 100"""
+// Progress Bar - https://tonylea.com/creating-a-progress-bar-with-tailwind 

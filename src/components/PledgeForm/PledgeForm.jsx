@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useInRouterContext, useNavigate, useParams, useOutletContext } from "react-router-dom";
+import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 
 // CSS 
 
 function PledgeForm(props) {
     const {project} = props
-    const authToken = window.localStorage.getItem("token")
+    // const authToken = window.localStorage.getItem("token")
     const [LoggedIn]= useOutletContext();
     
     const [pledges, setPledges] = useState({
@@ -30,7 +30,7 @@ function PledgeForm(props) {
         setPledges((prevPledges) => ({
         ...prevPledges,
         [id]: value,
-        //this is the project I want to call whih is the page I'm looking at
+        //this is the project I want to call & is the page I'm looking at
         }));
     };
 
@@ -40,8 +40,8 @@ function PledgeForm(props) {
         event.preventDefault();
 
         // get auth token from local storage
-        // const authToken = window.localStorage.getItem("token")
-
+        const authToken = window.localStorage.getItem("token")
+       
         // if the auth token exists (if logged in) 
             // TRY to POST the data to your deployed, using fetch.
             // send the token with it to authorise the ability to post
@@ -49,9 +49,8 @@ function PledgeForm(props) {
                 // if successful, return the JSON payload and reload the page with the data
                 // if not successful, CATCH the error and display as a pop up alert
         // if not logged in, redirect to login page
-
-        // if (authToken) {
-            if (LoggedIn) {
+    if (authToken) {
+        // if (LoggedIn) {
             try {
                 const response = await fetch(
                     `${import.meta.env.VITE_API_URL}pledges/`,
@@ -65,10 +64,8 @@ function PledgeForm(props) {
                     // {project:props.project.id, amount:pledges.amount, comment:pledges.comment, anonymous:pledges.anonymous}
                     // removed props from the above as we amended the line above.
                     // {project:project.id, amount:pledges.amount, comment:pledges.comment, anonymous:pledges.anonymous}
-                    {project:project.id,...pledges}
-
-                ),
-                }
+                    {project:project.id,...pledges}),
+                    }
                 );
                 if (!response.ok) {
                     throw new Error(await response.text());
@@ -93,7 +90,7 @@ function PledgeForm(props) {
             <div className="mb-2">
             <label 
             className="form-labels-sml" 
-            htmlFor="amount">Amount:</label>
+            htmlFor="amount">(+) Pledge Now</label>
             <input
                 className="input-sml-field"
                 type="number"
@@ -102,9 +99,9 @@ function PledgeForm(props) {
                 onChange={handleChange}
             />
             </div>
-            <div className="mb-2">
+            <div className="mb-3">
             <label 
-            className="form-labels-sml" htmlFor="comment">Comment:</label>
+            className="form-labels-sml" htmlFor="comment">(+) Leave a message</label>
             <input
              className="input-sml-field"
                 type="text"

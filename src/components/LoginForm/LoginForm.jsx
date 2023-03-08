@@ -3,7 +3,8 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 
 function LoginForm() {
     const [, setLoggedIn] = useOutletContext();
-    // State
+
+// STATE
     const [credentials, setCredentials] = useState({
         username: "",
         password: "",
@@ -11,14 +12,14 @@ function LoginForm() {
     
     //Hooks
     const navigate = useNavigate();
+
     // Actions
     const handleChange = (event) => {
+
         const { id, value } = event.target;
-        setCredentials((prevCredentials) => ({
-            ...prevCredentials,
-            [id]: value,
-        }));
-    }
+        setCredentials((prevCredentials) => ({ ...prevCredentials,[id]: value, }));
+    };
+
     const postData = async () => {
         const response = await fetch(
             `${import.meta.env.VITE_API_URL}api-token-auth/`,
@@ -45,6 +46,7 @@ const handleSubmit = async (event) => {
         }
     }
 };
+
     return (
 
 <div className="grid grid-cols-3 gap-5 mt-8">
@@ -57,11 +59,11 @@ const handleSubmit = async (event) => {
                 <div className="mb-4">
                     <label 
                         className="form-labels" 
-                        htmlfor="username"> 
+                        htmlFor="username"> 
                         Username 
                     </label>
                     <input 
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="input-field"
                         type="text" 
                         id="username" 
                         onChange={handleChange}
@@ -75,22 +77,24 @@ const handleSubmit = async (event) => {
                         Password 
                     </label>
                         <input 
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="input-field" 
                         type="password" 
                         id="password" 
                         onChange={handleChange}
-                        placeholder="******************"
+                        placeholder="Enter your password"
                     />
-                    <p className="text-gray-500 text-xs italic">Please enter your password</p>
+                    
                 </div>
 
                 <div className="flex items-center justify-between">
-                <button type="submit" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                <button type="submit" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow" >
                     Log In
                 </button>
-                <p className="text-center text-gray-500 text-xs">
-                No login ? ...  <a href='registration'> Here</a></p>
+                
 
+                </div>
+                <div className="mt-6">
+                <p className="text-gray-500 text-xs italic">No login ? ...  <a href='register'> Register Here</a></p>
                 </div>
             </form>
 
