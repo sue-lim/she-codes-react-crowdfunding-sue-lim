@@ -10,6 +10,7 @@ import CommentForm from "../components/CommentForm/CommentForm";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 function ProjectPage() {
+  
   // State
   const [projectData, setProjectData] = useState({ pledges: [] });
   const [commentData, setCommentData] = useState({ comments: [] });
@@ -62,13 +63,15 @@ function ProjectPage() {
           projectData.pledges.map((pledgeData, key) => {
         return (
           <li key={key}>
-          <p>$ {pledgeData.amount} from: {pledgeData.supporter} 
+          <p>$ {pledgeData.amount} from: {pledgeData.supporter
+                        ? pledgeData.supporter
+                        : "anonymous"}
           <span role="img"> ♠ </span>{pledgeData.comment}</p>
           </li>
         );
         })}
         </ul> </div>
-        <PledgeForm/>
+        <PledgeForm project={projectData.id} />
       </div>
 
       <div className="project-card-comments">
@@ -84,7 +87,7 @@ function ProjectPage() {
           );
           })}
           </ul></div>
-        <CommentForm/>
+        <CommentForm project={projectData.id} />
       </div>
     </div>
   </div>
