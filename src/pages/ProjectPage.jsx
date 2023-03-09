@@ -10,7 +10,6 @@ import CommentForm from "../components/CommentForm/CommentForm";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 function ProjectPage() {
-  
   // State
   const [projectData, setProjectData] = useState({ pledges: [] });
   const [commentData, setCommentData] = useState({ comments: [] });
@@ -30,7 +29,6 @@ function ProjectPage() {
       })
       .then((data) => {
         setProjectData(data);
-        setCommentData(data);
       });
   }, []);
 
@@ -72,7 +70,7 @@ function ProjectPage() {
         );
         })}
         </ul> </div>
-        <PledgeForm project={projectData.title} />
+        <PledgeForm project={projectData.id} />
       </div>
 
       <div className="project-card-comments">
@@ -88,7 +86,7 @@ function ProjectPage() {
           );
           })}
           </ul></div>
-        <CommentForm project={projectData.id} />
+        <CommentForm/>
       </div>
     </div>
   </div>
