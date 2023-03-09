@@ -2,7 +2,7 @@
 
 
 import { useState, useEffect } from "react";
-import { Link  } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 // Components
 import ProjectCard from "../components/ProjectCard/ProjectCard";

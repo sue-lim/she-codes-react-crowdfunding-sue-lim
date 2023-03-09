@@ -31,6 +31,7 @@ function PledgeForm(props) {
         setPledge((prevPledge) => ({
             ...prevPledge,
             [id]: value,
+            
         }));
     };
 

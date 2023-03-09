@@ -30,6 +30,7 @@ function ProjectPage() {
       })
       .then((data) => {
         setProjectData(data);
+        setCommentData(data);
       });
   }, []);
 
@@ -71,7 +72,7 @@ function ProjectPage() {
         );
         })}
         </ul> </div>
-        <PledgeForm project={projectData.id} />
+        <PledgeForm project={projectData.title} />
       </div>
 
       <div className="project-card-comments">
