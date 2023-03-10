@@ -6,10 +6,11 @@
 
 @layer base {
   h1 {
-    @apply text-6xl text-[#928688]
-  }
+    @apply font-bold text-6xl text-[#928688] font-mono ml-5 mt-10 mb-10;
+  }m
   h2 {
-    @apply font-bold text-4xl text-[#928688];
+    @apply font-bold text-4xl text-[#3f373c]
+    font-mono ;
   }
 
   h3 {
@@ -20,6 +21,10 @@
   }
   h5 {
     @apply font-medium text-sm text-[#3f373c] font-mono text-center mb-3;
+  }
+
+  h6 {
+    @apply font-medium text-3xl text-[#3f373c] font-mono font-bold text-center mb-7 mt-7;
   }
   p {
     @apply font-medium text-sm text-[#3f373c] font-mono text-left mb-3;
@@ -69,6 +74,7 @@
   @apply w-full h-full bg-[#c1b6b4] absolute
 }
 };
+
 
 
  /* grid grid-cols-3 gap-3 is tailwind settings --> https://tailwindcss.com/docs/grid-template-columns  */

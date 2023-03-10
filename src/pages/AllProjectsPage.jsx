@@ -1,8 +1,6 @@
-// ORIGINAL
-
 
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Components
 import ProjectCard from "../components/ProjectCard/ProjectCard";
@@ -34,7 +32,7 @@ function compare(a,b) {
   return (
     <div className="">
       <h1> The ScrubHub !</h1>
-      <h5> Our current projects - North & South of Perth Western Australia </h5>
+      <h6> Our current projects - North & South of Perth Western Australia </h6>
 <div className="grid place-content-start md:place-content-center">
       <div id="project-list">
         {/* below commented out shows all stories */}

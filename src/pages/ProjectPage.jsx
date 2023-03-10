@@ -14,7 +14,6 @@ function ProjectPage() {
   const [projectData, setProjectData] = useState({ pledges: [] });
   const [commentData, setCommentData] = useState({ comments: [] });
 
-
   // Hooks
   const { id } = useParams();
 
@@ -29,8 +28,13 @@ function ProjectPage() {
       })
       .then((data) => {
         setProjectData(data);
+        setCommentData(data);
+
+
       });
   }, []);
+
+
 
   return (
   <div className="project-pg-container">
@@ -62,15 +66,13 @@ function ProjectPage() {
           projectData.pledges.map((pledgeData, key) => {
         return (
           <li key={key}>
-          <p>$ {pledgeData.amount} from: {pledgeData.supporter
-                        ? pledgeData.supporter
-                        : "anonymous"}
+          <p>$ {pledgeData.amount} from: {pledgeData.supporter} 
           <span role="img"> ♠ </span>{pledgeData.comment}</p>
           </li>
         );
         })}
         </ul> </div>
-        <PledgeForm project={projectData.id} />
+        <PledgeForm/>
       </div>
 
       <div className="project-card-comments">

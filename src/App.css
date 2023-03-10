@@ -1,4 +1,4 @@
-/* PARENT / MAIN CSS FOR THE SITE */
+PARENT / MAIN CSS FOR THE SITE
 
 
 /* @import url(https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css); */
@@ -10,6 +10,10 @@
 /* * {
     border: 2px solid grey;
   } */
+  div.wrap {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
 
 body {
   background: #eeeeee;
@@ -180,4 +184,7 @@ margin-top: 24px;
   padding: 0px;
   float: right;
 }
+
+/*** Media Queries Below ***/
+/*** Media Queries Below ***/
 
