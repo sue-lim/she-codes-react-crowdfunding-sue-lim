@@ -16,7 +16,7 @@ const ProgressBar = ({ goal, sum_pledges }) => {
 
   return (
     
-    <div className="h-3 relative max-w-xl rounded-full overflow-hidden">
+    <div className="h-3 relative max-w-l rounded-full overflow-hidden flex flex-auto">
       <div className="progress-bar">
         {sum_pledges < goal ? (
           <div style={progressStyle} className="progress">{progressPercentage}</div>
@@ -26,9 +26,9 @@ const ProgressBar = ({ goal, sum_pledges }) => {
       </div>
       {/* test with the sum of the pledges & amount raised so far */}
       {sum_pledges < goal ? (
-        <p className="sub-text">
+        <div className="">
           <b>${sum_pledges > 0 ? sum_pledges : "0"} raised</b> of ${goal} goal
-        </p>
+        </div>
       ) : (
         <p>
           Success Goal reached! | ${sum_pledges} raised of ${goal} goal

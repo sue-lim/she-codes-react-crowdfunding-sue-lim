@@ -31,7 +31,7 @@ function compare(a,b) {
 
   return (
     <div className="">
-      <h1> The ScrubHub !</h1>
+      {/* <h1> The ScrubHub !</h1> */}
       <h6> Our current projects - North & South of Perth Western Australia </h6>
 <div className="grid place-content-start md:place-content-center">
       <div id="project-list">

@@ -37,70 +37,63 @@ function ProjectPage() {
 
 
   return (
-<div className="min-h-screen flex items-center justify-center">
-  <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
-  {/* COLUMN 1  */}
-    <div className="flex">
-      
-      <div className="project-card-img"> 
-      <div className="project-pg-container-left">
+  <div className="flex sm:flex md:flex lg:hidden xl:flex">
+
+    
+<div className="flex-1">
+      <div className="project-card-img"> <div className="project-pg-container-left">
       <h2 className="project-card-title">{projectData.title}</h2> 
-      <img src={projectData.image} /> 
-      </div>
-      <div className="project-pg-container-left">
-      <h4>Created at: {new Date(projectData.date_created).toDateString()}</h4>         
-      <p> Description: {projectData.description} </p>
-      </div>
-      </div>
-      </div>
-
-      {/* COLUMN 2  */}
-      <div className="">
-        <div className="project-card-pledges">
-          <div className="project-card-progressbar">
-          <ProgressBar goal={projectData.goal} sum_pledges={projectData.sum_pledges} />
           
-          </div>
-          </div>
+      <img src={projectData.image} /> </div>
+        {/* <div className="project-card-txt"> */}
+<div className="project-pg-container-left">
+          <h4>Created at: {new Date(projectData.date_created).toDateString()}</h4>         
+          <p> Description: {projectData.description} </p></div>
+        {/* </div> */}
+      </div>
+    </div>
 
-          <div className="project-card-pledges">
-          <div className="project-pg-container-sml-pledges">
-          <ul>
-          <h4>Pledges</h4>
-          {projectData.pledges &&
+
+    <div className="flex-1">
+      <div className="project-card-progressbar">
+       <ProgressBar goal={projectData.goal} sum_pledges={projectData.sum_pledges} />
+      </div>
+
+      <div className="project-card-pledges">
+      <div className="project-pg-container-sml-pledges">
+        <ul>
+        <h4>Pledges:</h4>
+        {projectData.pledges &&
           projectData.pledges.map((pledgeData, key) => {
-          return (
+        return (
           <li key={key}>
           <p>$ {pledgeData.amount} from: {pledgeData.supporter} 
           <span role="img"> ♠ </span>{pledgeData.comment}</p>
           </li>
-          );
-          })}
-          </ul> 
-          </div>
-        <PledgeForm/>
+        );
+        })}
+        </ul><PledgeForm/> </div>
+        
       </div>
 
       <div className="project-card-comments">
-        <div className="project-pg-container-sml-comments">
-          <ul>
-          <h4>Comments</h4>
-          {commentData.comments &&
-          commentData.comments.map((commentData, key) => {
-          return (
+      <div className="project-pg-container-sml-comments">
+        <ul>
+        <h4>Comments:</h4>
+        {commentData.comments &&
+        commentData.comments.map((commentData, key) => {
+        return (
           <li key={key}>
           <p>{commentData.commentator}  says ... {commentData.title} </p>
           </li>
           );
           })}
-          </ul>
-        </div>
-        <CommentForm/>
+          </ul><CommentForm/></div>
+        
       </div>
-
     </div>
   </div>
-</div>
+
   );
 }
 

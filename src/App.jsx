@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 // Pages
+import AboutUs from "./pages/AboutUs";
 import AllProjectsPage from "./pages/AllProjectsPage";
 import CommentPage from "./pages/CommentPage";
 import ContactPage from "./pages/ContactPage";
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
     element: <HeaderLayout />,
     children: [
       { path: "/", element: <HomePage /> },
+      { path: "/about-us", element: <AboutUs />},
       { path: "/all-projects/", element: <AllProjectsPage/>},
       { path: "/comment/", element: <CommentPage />},
       { path: "/contact/", element: <ContactPage />},
