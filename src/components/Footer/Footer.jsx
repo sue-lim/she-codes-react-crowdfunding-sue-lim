@@ -8,7 +8,7 @@ function Footer () {
 	
 	return (
 		<footer className="bg-neutral-200 text-center text-white dark:bg-neutral-600">
-			<div className="fixed inset-x-0 bottom-0">
+			<div className="fixed inset-x-2 bottom-0">
 				<div className="container pt-9">
 					<div className="ml-8 mb-8">
 
