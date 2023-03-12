@@ -65,8 +65,8 @@ const handleClick = () => {
                                 </Link> */}
                             {/* </li> */}
                             <li>
-                                <Link className="nav-bar-link-horizontal" to="/contact">
-                                Contact
+                                <Link className="nav-bar-link-horizontal" to="/about-us">
+                                About
                                 </Link>
                             </li>
                             <li>

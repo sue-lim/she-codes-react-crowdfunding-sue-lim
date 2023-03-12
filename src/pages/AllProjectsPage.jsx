@@ -31,18 +31,18 @@ function compare(a,b) {
 
   return (
     <div className="">
-      {/* <h1> The ScrubHub !</h1> */}
-      <h6> Our current project </h6>
-      <h6>North & South of Perth Western Australia</h6>
-<div className="grid place-content-start md:place-content-center">
-      <div id="project-list">
-        {/* below commented out shows all stories */}
-        {/* {projectList.map((project, key) => { */}
-        {latestProject.map((project, key) => {
-          return <ProjectCard key={key} projectData={project} />;
-        })}
-      </div>
-    </div></div>
+    <h6> Our current project </h6>
+    <h6>North & South of Perth Western Australia</h6>
+    <div className="grid place-content-start md:place-content-center">
+    <div id="project-list">
+      {/* below commented out shows all stories */}
+      {/* {projectList.map((project, key) => { */}
+      {latestProject.map((project, key) => {
+        return <ProjectCard key={key} projectData={project} />;
+      })}
+    </div>
+    </div>
+    </div>
   );
 }
 
