@@ -30,8 +30,8 @@ function compare(a,b) {
   const latestProject = projectList.sort(compare).slice(0,3); 
 
   return (
-    <div className="">
-    <h6> Our current project </h6>
+    <div className="mx-10">
+    <h6> Our current projects </h6>
     <h6>North & South of Perth Western Australia</h6>
     <div className="grid place-content-start md:place-content-center">
     <div id="project-list">

@@ -7,7 +7,7 @@ function ProjectCard(props) {
   const { projectData } = props;
 
   return (
-    <div className="">
+    <div className="mx-3">
       <h3>{projectData.title}</h3>
 
       <Link to={`/projects/${projectData.id}`}>

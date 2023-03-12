@@ -10,7 +10,7 @@ function Footer () {
 		<footer className="bg-neutral-200 text-center text-white dark:bg-neutral-600">
 			<div className="fixed inset-x-0 bottom-0">
 				<div className="container pt-9">
-					<div className="ml-4 mb-8">
+					<div className="ml-8 mb-8">
 
 						<a href="/contact" className="mr-9 text-neutral-600 dark:text-neutral-200">
 							<svg 

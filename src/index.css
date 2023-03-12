@@ -24,6 +24,9 @@
   h6 {
     @apply font-medium text-3xl text-[#3f373c] font-mono font-bold text-center mb-7 mt-7;
   }
+  about-us-text {
+    @apply font-medium text-3xl text-[#3f373c] font-mono font-bold text-center mb-5 mt-5;
+  }
   p {
     @apply font-medium text-sm text-[#3f373c] font-mono text-left mb-3;
   }
@@ -67,7 +70,7 @@
     @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow;
   }
 .progress {
-  @apply w-full h-full bg-[#e2b357] absolute
+  @apply w-full h-full bg-[#e2b357] 
 }
 .progress-bar {
   @apply w-full h-full bg-[#c1b6b4] absolute
