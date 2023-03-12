@@ -18,7 +18,8 @@ return (
      
       {/* CHATGPT for filler */}
         <h6>Why ...</h6>
-        A mobile shower facility would be beneficial for the homeless population in Perth for several reasons:
+        <p>
+        A mobile shower facility would be beneficial for the homeless population in Perth for several reasons:</p>
         <br/>
          <p>
           <li><strong> Improved hygiene:</strong> One of the main challenges faced by homeless individuals is access to basic hygiene facilities, such as showers. A mobile shower facility would provide a safe and clean space for individuals to bathe, improving their overall health and hygiene.</li>

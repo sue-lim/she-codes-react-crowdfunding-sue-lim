@@ -29,7 +29,7 @@ const handleClick = () => {
             <nav className="p-3 border-gray-600 rounded bg-gray-50 dark:bg-#c1b6b4 dark:border-#c1b6b4">
                 <div className="container flex flex-wrap items-center justify-between mx-auto">
                     <a href="/" className="flex items-center">
-                    <img src="src\assets\Images\ScrubHubLogo.JPG" className="h-6 mr-3 sm:h-10" alt="TheScrubHubLogo" />
+                    <img src="\Images\ScrubHubLogo.JPG" className="h-6 mr-3 sm:h-10" alt="TheScrubHubLogo" />
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
                     </a>
     
