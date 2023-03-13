@@ -7,10 +7,10 @@ import './Footer'
 function Footer () {
 	
 	return (
-		<footer className="bg-neutral-200 text-center text-white dark:bg-neutral-600">
+		<footer className="">
 			<div className="fixed inset-x-2 bottom-0">
 				<div className="container pt-9">
-					<div className="ml-8 mb-8">
+					<div className="ml-6 mb-8">
 
 						<a href="/contact" className="mr-9 text-neutral-600 dark:text-neutral-200">
 							<svg 
