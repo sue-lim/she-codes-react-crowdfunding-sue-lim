@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
+import "./LoginForm.css"
+
 function LoginForm() {
     const [, setLoggedIn] = useOutletContext();
 
@@ -49,9 +51,9 @@ const handleSubmit = async (event) => {
 
     return (
 
-<div className="grid grid-cols-3 gap-5 mt-8">
-  <div></div>
-    <div className="w-full max-w-xs rounded px">
+<div className="login-form-container">
+  <div className="login-form-col-1"></div>
+    <div className="login-form-col-2">
         <form 
             onSubmit={handleSubmit}
             className="form-container">
@@ -97,7 +99,7 @@ const handleSubmit = async (event) => {
                 <p className="text-gray-500 text-xs italic">No login ? ...  <a href='register'> Register Here</a></p>
                 </div>
             </form>
-
+<div className="login-form-col-2"></div>
         </div>
 </div>
             

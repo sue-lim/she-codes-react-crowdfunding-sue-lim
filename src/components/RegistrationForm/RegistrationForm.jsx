@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 
+import "./RegistrationForm.css";
+
 function RegistrationForm() {
     const authToken = window.localStorage.getItem("token")
     const [users, setUsers] = useState({
@@ -50,9 +52,9 @@ function RegistrationForm() {
     };
 
     return (
-        <div className="grid grid-cols-3 gap-5 mt-8">
-        <div></div>
-        <div  className="w-full max-w-xs">
+        <div className="registration-form-container">
+        <div className="registration-form-col-1"></div>
+        <div className="registration-form-col-2">
         <form 
         onSubmit={handleSubmit}
         className="form-container">
@@ -134,6 +136,7 @@ function RegistrationForm() {
                 </button>
             </form>
             </div>
+            <div className="registration-form-col-3"></div>
         </div>
     )
 }

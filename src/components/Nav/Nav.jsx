@@ -22,7 +22,7 @@ const handleClick = () => {
             <div className="container flex flex-wrap items-center justify-between mx-auto">
                 
                 <a href="/" className=" items-center">
-                <img src="public\Images\ScrubHubLogo.JPG" className=" sm:h-10" alt="The Scrub Hub Logo" />
+                <img src="\Images\ScrubHubLogo.JPG" className=" sm:h-10" alt="The Scrub Hub Logo" />
                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
                     
                 </span>

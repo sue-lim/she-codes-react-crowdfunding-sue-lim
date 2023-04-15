@@ -154,6 +154,14 @@ a:hover
 #menu li
 {
   padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0.5em 0;
+  width: 100%;
+  color: white;
+  background-color: #222;
+  opacity: .9;
   /* font-size: 22px; */
 }
 
