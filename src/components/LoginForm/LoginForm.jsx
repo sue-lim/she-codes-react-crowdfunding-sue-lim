@@ -49,7 +49,7 @@ const handleSubmit = async (event) => {
 
 <div className="grid grid-cols-3 gap-5 mt-8">
   <div></div>
-    <div className="w-full max-w-xs">
+    <div className="w-full max-w-xs rounded px">
         <form 
             onSubmit={handleSubmit}
             className="form-container">

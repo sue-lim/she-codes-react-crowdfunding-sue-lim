@@ -41,19 +41,19 @@ function ProjectPage() {
         const data = await res.json();
         setProjectData(data); /*returns projects and associated pledges to screen*/
         setCommentData(data); /*returns comments related to the project to the screen*/
-        setProjectPledgeAmount(data);
+    //     setProjectPledgeAmount(data);
 
-        const totalPledges = projectData.sum_pledges
-        // eslint-disable-next-line eqeqeq
-        .filter (pledgeData => pledgeData.project_id == id)
-        // reducing your list to an output value
-        .reduce ((sum, pledgeData) => sum + pledgeData.amount, 0)
-    setProjectPledgeAmount(totalPledges);
+    //     const totalPledges = projectData.sum_pledges
+    //     // eslint-disable-next-line eqeqeq
+    //     .filter (pledgeData => pledgeData.project_id == id)
+    //     // reducing your list to an output value
+    //     .reduce ((sum, pledgeData) => sum + pledgeData.amount, 0)
+    // setProjectPledgeAmount(totalPledges);
 
-    console.log(totalPledges)
+    // console.log(totalPledges)
     
-    const goalPercentage = ((totalPledges / projectData.goal) * 100).toFixed(2)
-    setGoalPercentage(goalPercentage);
+    // const goalPercentage = ((totalPledges / projectData.goal) * 100).toFixed(2)
+    // setGoalPercentage(goalPercentage);
 
 
       } catch (err) {
@@ -103,22 +103,25 @@ function ProjectPage() {
   <div className="project-pg-container">
 
     <div className="project-card-page-col-1">
-      <div className="project-card-img">
-      <h1 className="project-card-title">{projectData.title}</h1> 
-      <img src={projectData.image} />
-        <div className="project-card-txt">
 
-          <h3>Created at: {new Date(projectData.date_created).toDateString()}</h3>
-          <h3>{`Status: ${projectData.is_open}`}</h3>
-          <p> $Goal: {projectData.goal} </p>
-          <p> Description: {projectData.description} </p>
-        </div>
+      <div className="project-card-img"> <div className="project-pg-container-left">
+      <h2 className="project-card-title">{projectData.title}</h2> 
+          
+      <img src={projectData.image} /> </div>
+        {/* <div className="project-card-txt"> */}
+<div className="project-pg-container-left">
+          <h4>Created at: {new Date(projectData.date_created).toDateString()}</h4>
+          {/* <h3>{`Status: ${projectData.is_open}`}</h3> */}
+          {/* <p> $Goal: {projectData.goal} </p> */}
+          
+          <p> Description: {projectData.description} </p></div>
+        {/* </div> */}
       </div>
     </div>
 
     <div className="project-card-page-col-2">
       <div className="project-card-progressbar">
-      <p> ${projectData.sum_pledges}</p>
+      <p> ${projectData.sum_pledges} of $Goal: {projectData.goal} </p>
       <ProgressBar/>
 
       {/* <h3>{projectData.is_open
@@ -134,33 +137,35 @@ function ProjectPage() {
       </div>
 
       <div className="project-card-pledges">
+      <div className="project-pg-container-sml-pledges">
         <ul>
-        <h3>Pledges:</h3>
+        <h4>Pledges:</h4>
         {projectData.pledges &&
           projectData.pledges.map((pledgeData, key) => {
         return (
           <li key={key}>
-          $ {pledgeData.amount} from:  {pledgeData.supporter}
-          {pledgeData.comment}
+          <p>$ {pledgeData.amount} from:  {pledgeData.supporter}
+          {pledgeData.comment}</p>
           </li>
         );
         })}
-        </ul> 
+        </ul> </div>
         <PledgeForm/>
       </div>
 
       <div className="project-card-comments">
+      <div className="project-pg-container-sml-comments">
         <ul>
-        <h3>Comments:</h3>
+        <h4>Comments:</h4>
         {commentData.comments &&
         commentData.comments.map((commentData, key) => {
         return (
           <li key={key}>
-          {commentData.commentator}  says ... {commentData.title} 
+          <p>{commentData.commentator}  says ... {commentData.title} </p>
           </li>
           );
           })}
-          </ul>
+          </ul></div>
         <CommentForm/>
       </div>
     </div>

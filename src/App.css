@@ -19,24 +19,18 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 
-
-h1 {
-  font-weight: bold;
-  color: gray;
-  font-size: 80px;
+hr{
+  height: 1px;
+  background-color: #eeeeee;
+  border: none;
 }
 
-h2 {
-  font-weight: bold;
-  color: gray;
-  font-size: 100px;
-}
 
 img {
   width: ;
   height: auto;
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(90%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(90%);
 }
 
 #project-list {
@@ -71,6 +65,7 @@ img {
   height: 100%;
   padding: 20px;
   background-color:;
+  font-display: right;
 }
 
 .project-card-progressbar {

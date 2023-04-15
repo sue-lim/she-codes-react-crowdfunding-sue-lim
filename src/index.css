@@ -5,38 +5,63 @@
 @tailwind utilities;
 
 @layer base {
-    h1 {
-      @apply text-6xl;
-    }
-    h2 {
-      @apply text-4xl;
-    }
+  h1 {
+    @apply text-6xl text-[#928688]
+  }
+  h2 {
+    @apply font-bold text-4xl text-[#928688];
+  }
 
-    h3 {
-        @apply font-medium text-lg text-slate-500 font-mono font-bold text-center mb-3;
-      }
+  h3 {
+    @apply font-medium text-lg text-[#3f373c] font-mono font-bold text-center mb-3;
+  }
+  h4 {
+    @apply font-medium text-lg text-[#3f373c] font-mono font-bold text-left mb-3;
+  }
+  h5 {
+    @apply font-medium text-sm text-[#3f373c] font-mono text-center mb-3;
+  }
+  p {
+    @apply font-medium text-sm text-[#3f373c] font-mono text-left mb-3;
+  }
 
-    p {
-      @apply font-medium text-sm text-slate-500 font-mono text-center mb-3;
-    }
+
     
     /* ... */
 }
 @layer components {
   .form-labels {
       @apply block text-gray-700 text-sm font-medium mb-2;
+  }
+
+  .form-labels-sml {
+    @apply block text-gray-700 text-xs font-mono mb-2;
+}
+  .form-container {
+      @apply border-0 bg-white drop-shadow-xl rounded px-10 pt-6 pb-8 mb-4;
+  }
+
+  .form-container-sml {
+    @apply border-0 bg-white drop-shadow-xl rounded px-10 pt-6 pb-8 mb-4;
+}
+  
+  .input-sml-field {
+    @apply shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow;
 
   }
-  .form-container {
-      @apply border-0 bg-white drop-shadow-xl rounded px-8 pt-6 pb-8 mb-4;
+  .project-pg-container-sml-pledges {
+    @apply  border-0 bg-white drop-shadow-xl rounded px-10 pt-6 pb-8 mb-4;
   }
- .form-input {
-      /* @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight   focus:outline-none focus:shadow-outline; */
-      /*need to fix the above*/
- }
-  
+  .project-pg-container-sml-comments {
+    @apply  border-0 bg-white drop-shadow-xl rounded px-10 pt-6 pb-8 mb-4;
+  }
+  .project-pg-container-left {
+    @apply  border-0 bg-white drop-shadow-xl rounded px-10 pt-6 pb-8 mb-4;
+  }
 };
 
  /* grid grid-cols-3 gap-3 is tailwind settings --> https://tailwindcss.com/docs/grid-template-columns  */
 
  /* // TAILWIND TEMPLATE - https://tailwind-elements.com/docs/standard/forms/form-templates/ */
+
+/* Gray brown shades - https://colorpalettes.net/tag/grey-brown-color/*/
