@@ -7,5 +7,6 @@ We need the public to pledge / donate to having buses for funding to upgrading w
 Current objective is to get enough funding for 2 buses. 
 Once these are up & going and also if this proves it self to be successful, further request for pledges / funding to fit more buses. 
 
+# Tech Utilized 
 Front End Project utlising #REACT & Tailwind CSS - Deployed to above link via Netlify (https://www.netlify.com/)
 Back End Project utlising #DRF & deployed via FlyIO - https://fly.io/ || Back end URL - https://spring-glade-2620.fly.dev/projects/
