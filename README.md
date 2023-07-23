@@ -1,5 +1,5 @@
 # Project Idea - The Scrub Hub 
-> Deployed Link - https://thescrubhub.netlify.app/
+[x] Deployed Link - https://thescrubhub.netlify.app/
 
 > Project Description 
 > *Crowdfunding Site to refit old buses with plumbing & shower facilities for a mobile shower service for the homeless. 
