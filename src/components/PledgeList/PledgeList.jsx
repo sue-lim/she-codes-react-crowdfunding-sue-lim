@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
-// CSS
-
-
+// component to extract the project data 
 function PledgeList(props) {
   const { projectData } = props;
 
+  //returning these from API / URL 
   return (
     <div className="pledge-list">
       <Link to={`/pledges/`}>
@@ -16,4 +15,6 @@ function PledgeList(props) {
   );
 }
 
+
+// Export provides permission for it to be reused elsewhere in the project
 export default PledgeList;

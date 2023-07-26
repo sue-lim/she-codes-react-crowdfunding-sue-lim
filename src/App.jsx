@@ -18,9 +18,10 @@ import SessionUserPage from "./pages/SessionUserPage";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 
-
 //css
 import './App.css'
+
+
 import { useState } from "react";
 const HeaderLayout = () => {
   
@@ -33,6 +34,8 @@ const HeaderLayout = () => {
     </>
   )
 };
+
+//  define the routing for different paths in the application.
 const router = createBrowserRouter([
   {
     element: <HeaderLayout />,

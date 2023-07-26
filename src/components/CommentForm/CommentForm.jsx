@@ -1,45 +1,55 @@
 import React, { useState } from "react";
 import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 
-
 function CommentForm(props) {
 
-    //Actions / accesses project ID so the pledge can be connected to it
+    // useParams hook to extract the id parameter from the DRF
+    // in this case the project 
     const { id } = useParams();
-    
     const {project} = props;
-  
-    const authToken = window.localStorage.getItem("token");
     
+    // token retrieval from browser's / windows local storage 
+    const authToken = window.localStorage.getItem("token");
+    // outlet hook is used & along with auth token. 
+    // user needs to be logged in to add a comment 
     const [loggedIn] = useOutletContext();
     
+    // usestate hook is used to grab the fields as per project ID from DRF and set comment to the project
     const [comment, setComment] = useState({
         title: "",
         content: "",
         project: id,        
     });
 
-    // HOOKS / enables redirect
+    // hook to enables redirect
+    // however this does not redirect it back to itself
+    // research to include in 'handleSubmit'
     const navigate = useNavigate();
     
-    
+    // event handler ie user typing in field // arrow function for field input 
     const handleChange = (event) => {
         const { id, value } = event.target;
-        //data is being sent 
+
+        //set comment is updating comment related to above usestate hook in regards to the project & creating a new project 
+        // setComment with prevComment ensures existing comments are preserved 
         setComment((prevComment) => ({
         ...prevComment,
+        // ID is the project ID and value is users input 
         [id]: value,
-        //this is the project I want to call & is the page I'm looking at
+        
         }));
     };
 
+    // post data 
     const postData = async () => {
 
         const response = await fetch(
+            // send data to API comments/ DRF endpoint 
             `${import.meta.env.VITE_API_URL}comments/`,
             {
                 method: "post",
                 headers: {
+                    // posting with authorisation via token in JSON to comments as per the project 
                     "Authorization": `Token ${authToken}`,
                     "Content-Type": "application/json",
                 },
@@ -49,38 +59,40 @@ function CommentForm(props) {
         return response.json();
     };
 
+    // submit form with handlesubmit 
     const handleSubmit = async (event) => {
+            // prevents the form from being submitted until conditions are met via fetch requests
+
         event.preventDefault();
 
+        // checks are in place
+        // 1) logged in 
         if (loggedIn) {
             try {
+                // 2) comment.title exists 
                 if (comment.title) {
                     postData().then((response) =>{
                         console.log(response);
                         // location.reload();
                     });                    
                 } else {
+                    // if no title alert msg 
                     return (alert("Please enter a title!"));
                 }
+            // catch block will handle the error with a console log box with the above error
             } catch (err) {
                 console.error(err);
                 alert(`Error: ${err.message}`);
             };
             
         } else {
-            // redirect to login page
+            // if user is not logged this will navigate to the login page.
             navigate(`/login`);
-            // return (
-            //     <Link to="/login">Please log in to pledge</Link>
-            // );
         }
     };
 
-
-    
+    // the below is related to handleSubmit and how it handles form submission when button is clicked 
     return (
-        //SUPPORTER - AUTO GENERATED 
-        //DRF NOTES - ID AUTO GENERATED 
         <div>
         <form className="form-container-sml" onSubmit={handleSubmit}>
             <div className="mb-2">
@@ -115,4 +127,5 @@ function CommentForm(props) {
     );
 }
 
+// Exporint is providing permission for it to be reused elsewhere in the project
 export default CommentForm;

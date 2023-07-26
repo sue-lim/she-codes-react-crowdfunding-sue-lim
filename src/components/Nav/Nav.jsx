@@ -3,15 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 // Styles
 import "./Nav.css";
 
-
+// function added to the nav bar to show loggedin user 
 function Nav(props) {
 const { loggedIn, setLoggedIn } = props;
 
+// function for navigation to be used elsewhere 
 const navigate = useNavigate();
 
+// function when loggin out 
 const handleClick = () => {
+    // remove token from the local stoge 
     window.localStorage.removeItem("token");
+    // setLoggedin = false means they are logged out 
     setLoggedIn(false);
+    // return to homepage 
     navigate(`/`);
 
 };
@@ -131,6 +136,7 @@ const handleClick = () => {
 }
 
 
+// Export provides permission for it to be reused elsewhere in the project
 export default Nav;
 
 

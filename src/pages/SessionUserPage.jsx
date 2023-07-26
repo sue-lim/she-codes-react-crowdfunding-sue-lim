@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from "react";
 import { useParams, useOutletContext } from "react-router-dom";
+
+// NOT USED 
 // PAGE FOR THE USER THAT IS LOGGED IN 
 // Dummy Data
 // import { oneProject } from "../data";

@@ -4,8 +4,12 @@ import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 import "./RegistrationForm.css";
 
 function RegistrationForm() {
+    // get auth token from local storage
     const authToken = window.localStorage.getItem("token")
+
+    // hook to create state variable "user"
     const [users, setUsers] = useState({
+        // fields for the new variable, typically the should match those in the API 
         "username": "",
         "first_name":"",
         "last_name":"",
@@ -15,33 +19,49 @@ function RegistrationForm() {
         
     });
 
+    // setting up useNavigate() to be called later 
     const navigate = useNavigate();
+
+    // accesses API to ID / retrieve / create   
     const { id } = useParams();
 
+    // event handler ie user typing in field // arrow function for field input 
     const handleChange = (event) => {
         const { id, value } = event.target;
+
+        //set user is updating user related to above usestate hook in regards to the user & creating a new object 
+        // set user  with prevuser  ensures existing users are preserved 
         setUsers((prevUsers) => ({
         ...prevUsers,
         [id]: value,
         }));
     };
 
+    // submit form with handlesubmit 
     const handleSubmit = async (event) => {
+        // prevents the form from being submitted until conditions are met via fetch requests
         event.preventDefault();
 
+        // check if user is logged in or authenticated 
         if (!authToken) {
+
+            // try to run through the next block of code to create a new user
             try {
                 const response = await fetch(
+                    //  api via URL / users 
                     `${import.meta.env.VITE_API_URL}users/`,
                     {
                     method: "post",
                     headers: {
                     "Content-Type": "application/json",
                 },
+                // sent to api as jsn to users
                 body: JSON.stringify(users),
                 }
             );
+            // on success, navigate to login 
             navigate(`/login`);
+            // catch block will handle the error with a console log box error alert 
         } catch (err) {
             console.error(err);
         }
@@ -141,4 +161,6 @@ function RegistrationForm() {
     )
 }
 
+
+// Export provides permission for it to be reused elsewhere in the project
 export default RegistrationForm;

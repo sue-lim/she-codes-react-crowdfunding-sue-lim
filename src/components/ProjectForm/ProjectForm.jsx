@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+// hooks from React Router, which allow navigation and access to URL parameters, respectively.
 import { useNavigate, useParams } from "react-router-dom";
 
 // Components
@@ -6,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 // Styles
 // import "./ProjectFormPage.css";
 
+// hook to create state variable "projects"
 const [projects, setProjects] = useState({
     // from JSON Raw Body in Deployed (default values)
     // this is what you return at the bottom - your list might look different to mine. If so, don't worry!
@@ -15,40 +18,41 @@ const [projects, setProjects] = useState({
     // "project": null,        
 });
 
-// enables redirect
+// setting up useNavigate() to be called later 
 const navigate = useNavigate();
 
-// accesses project ID so the pledge can be connected to it
+// accesses API to ID / retrieve / create 
 const { id } = useParams();
 
-// copies the original data, replaces the old data for each id/value pair to what is input in the form (changes state). this will be submitted to API below
+// event handler ie user typing in field // arrow function for field input 
 const handleChange = (event) => {
     const { id, value } = event.target;
+
+    //set projects is updating projects related to above usestate hook in regards to the project & creating a new object 
+    // setprojects with prevprojects ensures existing projects are preserved 
     setPledges((prevProjects) => ({
     ...prevProjects,
     [id]: value,
     }));
 };
 
-// submit the new data (state change) from handleChange.
-    // POST has been moved from separate function to be embedded and actioned when the submit button is pressed. 
+// submit form with handlesubmit 
 const handleSubmit = async (event) => {
+    // prevents the form from being submitted until conditions are met via fetch requests
     event.preventDefault();
 
     // get auth token from local storage
     const authToken = window.localStorage.getItem("token")
 
-    // if the auth token exists (if logged in) 
-        // TRY to POST the data to your deployed, using fetch.
-        // send the token with it to authorise the ability to post
-            // wait for the response - 
-            // if successful, return the JSON payload and reload the page with the data
-            // if not successful, CATCH the error and display as a pop up alert
-    // if not logged in, redirect to login page
-
+    // if user has an authenticated token then we will proceed, else error 
     if (authToken) {
+
+        // try is javascript it will run thhrough the next block of code and any errors, catch will deal wit it. 
         try {
+
+            // fetch 
             const response = await fetch(
+                // api via URL projects 
                 `${import.meta.env.VITE_API_URL}project/`,
                 {
                 method: "post",
@@ -56,25 +60,32 @@ const handleSubmit = async (event) => {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${authToken}`,
             },
+
+            // sent to api as jsn to projects 
             body: JSON.stringify(projects),
             }
             );
+
+            // checks if any erros from server, if not ok throw error 
             if (!response.ok) {
                 throw new Error(await response.text());
             }
+            // reload after successful form submission 
             location.reload();
+
+        // catch block will handle the error with a console log box error alert 
         } catch (err) {
             console.error(err);
             alert(`Error: ${err.message}`);
         }
     } else {
-    //REDIRECT TO LOGIN PAGE 
+    // redirect to lin 
     navigate(`/login`);
     }
 };
 
+// the below is related to handleSubmit and how it handles form submission when button is clicked 
 return (
-    //DRF NOTES - ID AUTO GENERATED 
     <div>
     <form onSubmit={handleSubmit}>
         <div>
@@ -121,4 +132,5 @@ return (
 );
 
 
+// Export provides permission for it to be reused elsewhere in the project
 export default ProjectForm;

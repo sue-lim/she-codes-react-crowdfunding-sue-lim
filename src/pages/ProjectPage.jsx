@@ -11,23 +11,31 @@ import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 function ProjectPage() {
   // State
+
+  // Project data related to a specific project, including information about the project and an array of pledges.
   const [projectData, setProjectData] = useState({ pledges: [] });
+
+  //  It holds the data related to the comments associated with the project.
   const [commentData, setCommentData] = useState({ comments: [] });
 
-  // Hooks
+  // accesses API to ID / retrieve / create 
   const { id } = useParams();
 
    // Check user is LoggedIn
    const token = window.localStorage.getItem("token");
 
-  //Effects
+  // use effct hook to fetch data from the API using an ID 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}projects/${id}`)
       .then((results) => {
+        // returns result in JSN 
         return results.json();
       })
       .then((data) => {
+
+        // pledges into the list as set above 
         setProjectData(data);
+        //  comments into the list as set above 
         setCommentData(data);
 
 

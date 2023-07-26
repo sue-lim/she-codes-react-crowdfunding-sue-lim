@@ -74,6 +74,8 @@ function Footer () {
 	);
 	}
 
+
+// Export provides permission for it to be reused elsewhere in the project
 export default Footer;
 
 
